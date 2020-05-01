@@ -1,3 +1,3 @@
-WorldoMeters Scrapper
+WorldoMeters Scraper
 -------------------------------
-This is a tool to scrap African countries data from the WorldOMeters platform.
+This is a tool to scrap COVID data from the WorldOMeters platform into cvs file.

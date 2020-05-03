@@ -24,6 +24,7 @@ total_cases = []
 total_deaths = []
 total_recovered = []
 active_cases = []
+total_tests = []
 
 i = 1
 for data in content:
@@ -31,12 +32,18 @@ for data in content:
         countries.append(data.text.strip())
     if i%13 == 2:
         total_cases.append(data.text.strip())
+        current_total_case = data.text.strip()
     if i%13 == 4:
         total_deaths.append(data.text.strip())
     if i%13 == 6:
         total_recovered.append(data.text.strip())
     if i%13 == 7:
         active_cases.append(data.text.strip())
+    if i%13 == 11:
+        if not data.text.strip():
+            total_tests.append(current_total_case)
+        else:
+            total_tests.append(data.text.strip())
     i += 1
 
 column_names = [
@@ -45,6 +52,7 @@ column_names = [
     "Total Deaths",  
     "Total Recovered", 
     "Active Cases"
+    "Total Tests"
 ]
 
 covid19_table = {
@@ -52,7 +60,8 @@ covid19_table = {
     "total_cases": total_cases,
     "total_deaths": total_deaths,
     "total_recovered": total_recovered,
-    "active_cases": active_cases
+    "active_cases": active_cases,
+    "total_tests": total_tests
 }
 
 df = pd.DataFrame(covid19_table)
